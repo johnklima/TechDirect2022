@@ -68,9 +68,7 @@ public class LanderScript : MonoBehaviour
 
         if (isOnGround)
         {
-            velocity.y = 0;
-            Vector3 pos = transform.position;            
-            transform.position = pos;
+            velocity.y = 0;           
         }
             
     }
