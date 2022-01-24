@@ -62,8 +62,8 @@ public class LanderScript : MonoBehaviour
 
         velocity += acceleration * Time.deltaTime;
 
-        velocity += jumpForce;
-
+        velocity += jumpForce ;
+        
         transform.position += velocity * Time.deltaTime;
 
         //reset thrust
@@ -107,7 +107,7 @@ public class LanderScript : MonoBehaviour
     {
         isOnGround = false;
         jumpForce = force;
-
+        //jumpForce += transform.forward * 2.0f + Vector3.up * 2.0f;
         Debug.Log(force.ToString());
 
     }
