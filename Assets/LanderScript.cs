@@ -13,6 +13,7 @@ public class LanderScript : MonoBehaviour
 
     public float mass = 1;
     public float energy = 10.0f;
+    public float crashMagnitude = 5.0f;
 
     //gravity in meters per second per second
     public float GRAVITY_CONSTANT = -9.8f;
@@ -62,11 +63,13 @@ public class LanderScript : MonoBehaviour
     }
     void handleGrounded()
     {
+        if (thrust.magnitude > 1.0f)
+            isOnGround = false;
+
         if (isOnGround)
         {
             velocity.y = 0;
-            Vector3 pos = transform.position;
-            pos.y = 0;
+            Vector3 pos = transform.position;            
             transform.position = pos;
         }
             
@@ -82,10 +85,10 @@ public class LanderScript : MonoBehaviour
             Vector3 pos = transform.position;
             pos.y = 0;
             transform.position = pos;
-            if (velocity.magnitude > 1.0f )
-                Debug.Log("SPLAT!");
-            else if( velocity.magnitude < 1.0f )
-                Debug.Log("WOOT!");
+            if (velocity.magnitude > crashMagnitude)
+                Debug.Log("SPLAT! " + velocity.magnitude.ToString() );
+            else if( velocity.magnitude <= crashMagnitude )
+                Debug.Log("WOOT! " + velocity.magnitude.ToString());
 
             isOnGround = true;
 

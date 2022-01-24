@@ -2141,6 +2141,7 @@ MonoBehaviour:
   thrust: {x: 0, y: 0, z: 0}
   mass: 1
   energy: 10
+  crashMagnitude: 5
   GRAVITY_CONSTANT: -9.8
   isOnGround: 0
 --- !u!4 &2089001104
