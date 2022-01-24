@@ -10,6 +10,7 @@ public class LanderScript : MonoBehaviour
     public Vector3 acceleration = new Vector3(0, 0, 0);
     public Vector3 finalForce = new Vector3(0, 0, 0);
     public Vector3 thrust = new Vector3(0, 0, 0);
+    public Vector3 jumpForce = new Vector3(0, 0, 0);
 
     public float mass = 1;
     public float energy = 10.0f;
@@ -49,6 +50,10 @@ public class LanderScript : MonoBehaviour
     }
     void handleMovement()
     {
+
+        if (isOnGround)
+            return;
+        
         //reset final force to the initial force of gravity
         finalForce.Set(0, GRAVITY_CONSTANT * mass, 0);
         finalForce += thrust;
@@ -56,10 +61,14 @@ public class LanderScript : MonoBehaviour
         acceleration = finalForce / mass;
 
         velocity += acceleration * Time.deltaTime;
+
+        velocity += jumpForce;
+
         transform.position += velocity * Time.deltaTime;
 
         //reset thrust
         thrust = Vector3.zero;
+        jumpForce = Vector3.zero;
     }
     void handleGrounded()
     {
@@ -84,14 +93,22 @@ public class LanderScript : MonoBehaviour
             pos.y = 0;
             transform.position = pos;
             if (velocity.magnitude > crashMagnitude)
-                Debug.Log("SPLAT! " + velocity.magnitude.ToString() );
-            else if( velocity.magnitude <= crashMagnitude )
-                Debug.Log("WOOT! " + velocity.magnitude.ToString());
+            { } //   Debug.Log("SPLAT! " + velocity.magnitude.ToString() );
+            else if (velocity.magnitude <= crashMagnitude)
+            { } //    Debug.Log("WOOT! " + velocity.magnitude.ToString());
 
             isOnGround = true;
 
             velocity.y = 0;
         }
+
+    }
+    public void Jump(Vector3 force)
+    {
+        isOnGround = false;
+        jumpForce = force;
+
+        Debug.Log(force.ToString());
 
     }
 }
