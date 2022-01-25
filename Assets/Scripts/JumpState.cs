@@ -19,6 +19,8 @@ public class JumpState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -30,8 +32,8 @@ public class JumpState : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 jumpTarget.position = hit.point;
-
-                transform.LookAt(jumpTarget.position);
+                float mag = Vector3.Distance(jumpTarget.position, transform.position);
+                transform.LookAt(jumpTarget.position);// + Vector3.up * mag );
 
                 //START JUMP
                 Vector3 jumpForce = calculateIterativeTrajectory(transform.position, jumpTarget.position, 45);
@@ -74,7 +76,7 @@ public class JumpState : MonoBehaviour
         //any angle greater is the angle, plus HALF the angle of the vector to y up.
         //with balistics the angle ALWAYS has to be greater than the direct angle from
         //point to point. so we add half of this angle to 90, splitting the difference
-
+        /*
         if (angle < 0.785398163f)
             angle = 0.785398163f;
         else
@@ -89,6 +91,7 @@ public class JumpState : MonoBehaviour
         if (startPoint.y > endPoint.y)
             angle = 0.985398163f;
 
+        */
         //if we are asked to use a specific angle, this is our angle..
         if (desiredAngle != 0)
         {
@@ -99,10 +102,11 @@ public class JumpState : MonoBehaviour
         float Y = endPoint.y - startPoint.y;
 
         //are we firing down a hill?
-        if (endPoint.y < startPoint.y)
+        /*if (endPoint.y < startPoint.y)
         {
             angle *= -0.5f;
         }
+        */
 
         // perform the trajectory calculation to arrive at the gun powder charge aka 
         // target velocity for the distance we desire, based on launch angle
@@ -179,14 +183,24 @@ public class JumpState : MonoBehaviour
             iters++;
         }
 
+        
         Vector3 angV = new Vector3(transform.forward.x, 0, transform.forward.z);
         angV.Normalize();
         Vector3 side = Vector3.Cross(angV, Vector3.up);
         side.Normalize();
         //we need to rotate that by our actual launch angle
         angV = Quaternion.AngleAxis(Mathf.Rad2Deg * angle, side) * angV;
+        
 
-       
+        //lets take another approach, simply rotate the jumper to the desired angle
+        //assuming it's forward is okay
+        /*Quaternion q = transform.rotation;        
+        transform.Rotate(transform.right, desiredAngle);
+
+        Vector3 fwd = transform.forward;
+        transform.rotation = q;
+        */
+
         return angV * Vo;   //multiply by calculated "powder charge"   
 
 

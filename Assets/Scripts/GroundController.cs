@@ -24,7 +24,7 @@ public class GroundController : MonoBehaviour
         float walk = Input.GetAxis("Vertical");
 
 
-        Debug.Log("turn = " + turn + " walk = " + walk);
+        //Debug.Log("turn = " + turn + " walk = " + walk);
         
         transform.Rotate(transform.up, turn * turnspeed * Time.deltaTime);
 

@@ -20,6 +20,7 @@ public class LanderScript : MonoBehaviour
     public float GRAVITY_CONSTANT = -9.8f;
 
     public bool isOnGround = false;
+    public bool isJumping = false;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class LanderScript : MonoBehaviour
     void Update()
     {
 
+        
 
         handleInput();
         handleMovement();
@@ -66,6 +68,9 @@ public class LanderScript : MonoBehaviour
         
         transform.position += velocity * Time.deltaTime;
 
+        //point in the direction of the movement
+        //transform.LookAt(transform.position + velocity);
+
         //reset thrust
         thrust = Vector3.zero;
         jumpForce = Vector3.zero;
@@ -77,8 +82,9 @@ public class LanderScript : MonoBehaviour
 
         if (isOnGround)
         {
-            velocity.y = 0;           
+            velocity.y = 0;            
         }
+       
             
     }
     void handleLanding()
@@ -98,17 +104,20 @@ public class LanderScript : MonoBehaviour
             { } //    Debug.Log("WOOT! " + velocity.magnitude.ToString());
 
             isOnGround = true;
+            isJumping = false;
 
-            velocity.y = 0;
+            velocity = Vector3.zero;
         }
 
     }
     public void Jump(Vector3 force)
     {
         isOnGround = false;
+        isJumping = true;
+        //velocity = force;// Vector3.zero;
         jumpForce = force;
         //jumpForce += transform.forward * 2.0f + Vector3.up * 2.0f;
-        Debug.Log(force.ToString());
+        Debug.Log("JUMP " + force.ToString());
 
     }
 }

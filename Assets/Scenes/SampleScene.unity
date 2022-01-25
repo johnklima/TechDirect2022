@@ -2258,6 +2258,7 @@ MonoBehaviour:
   crashMagnitude: 5
   GRAVITY_CONSTANT: -9.8
   isOnGround: 0
+  isJumping: 0
 --- !u!4 &2089001104
 Transform:
   m_ObjectHideFlags: 0
