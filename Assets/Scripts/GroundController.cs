@@ -13,19 +13,22 @@ public class GroundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetComponent<LanderScript>();
+       lander = transform.GetComponent<LanderScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (lander.isJumping)
+            return;
+
         float turn = Input.GetAxis("Horizontal");
         float walk = Input.GetAxis("Vertical");
 
 
         //Debug.Log("turn = " + turn + " walk = " + walk);
-        
+
         transform.Rotate(transform.up, turn * turnspeed * Time.deltaTime);
 
         Vector3 fwd = transform.forward;
@@ -33,8 +36,21 @@ public class GroundController : MonoBehaviour
 
         transform.position = newpos;
 
+        int layerMask = 1 << 3;
 
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + Vector3.up, -Vector3.up);
+        if (Physics.Raycast(ray, out hit, 10000.0f, layerMask))
+        {
 
-
+            Debug.Log("GROUND POINT " + hit.collider.name);
+            if (hit.distance > 1.5f)
+            {
+                lander.jumpTarget.position = hit.point;
+                lander.isJumping = true;
+                lander.isOnGround = false;
+                lander.groundPoint = hit.point;
+            }
+        }
     }
 }

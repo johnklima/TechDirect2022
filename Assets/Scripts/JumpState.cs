@@ -23,7 +23,7 @@ public class JumpState : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+           
             int layerMask = 1 << 3; 
 
             RaycastHit hit;
@@ -32,13 +32,28 @@ public class JumpState : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
                 jumpTarget.position = hit.point;
-                float mag = Vector3.Distance(jumpTarget.position, transform.position);
-                transform.LookAt(jumpTarget.position);// + Vector3.up * mag );
+
+                landerScript.groundPoint = hit.point;
+
+                //float mag = Vector3.Distance(jumpTarget.position, transform.position);
+                
+                //get the current look
+                Quaternion q = transform.rotation; 
+                
+                //look at the target to get the correct force vector                
+                transform.LookAt(jumpTarget.position);   // + Vector3.up * mag );
 
                 //START JUMP
-                Vector3 jumpForce = calculateIterativeTrajectory(transform.position, jumpTarget.position, 45);
-                
+                Vector3 jumpForce = calculateIterativeTrajectory(
+                                    transform.position, 
+                                    jumpTarget.position, 
+                                    45);  //use zero for angle to allow the calc to find it
+                                         //alternately, specify an angle regardless.
 
+                //restore previous look, so we can interpolate the look for smoothing
+                transform.rotation = q;
+                
+                //jump
                 landerScript.Jump(jumpForce);
             
             }
@@ -76,7 +91,7 @@ public class JumpState : MonoBehaviour
         //any angle greater is the angle, plus HALF the angle of the vector to y up.
         //with balistics the angle ALWAYS has to be greater than the direct angle from
         //point to point. so we add half of this angle to 90, splitting the difference
-        /*
+        
         if (angle < 0.785398163f)
             angle = 0.785398163f;
         else
@@ -91,7 +106,7 @@ public class JumpState : MonoBehaviour
         if (startPoint.y > endPoint.y)
             angle = 0.985398163f;
 
-        */
+        
         //if we are asked to use a specific angle, this is our angle..
         if (desiredAngle != 0)
         {
@@ -191,15 +206,6 @@ public class JumpState : MonoBehaviour
         //we need to rotate that by our actual launch angle
         angV = Quaternion.AngleAxis(Mathf.Rad2Deg * angle, side) * angV;
         
-
-        //lets take another approach, simply rotate the jumper to the desired angle
-        //assuming it's forward is okay
-        /*Quaternion q = transform.rotation;        
-        transform.Rotate(transform.right, desiredAngle);
-
-        Vector3 fwd = transform.forward;
-        transform.rotation = q;
-        */
 
         return angV * Vo;   //multiply by calculated "powder charge"   
 

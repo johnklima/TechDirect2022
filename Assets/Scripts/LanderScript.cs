@@ -21,10 +21,14 @@ public class LanderScript : MonoBehaviour
 
     public bool isOnGround = false;
     public bool isJumping = false;
+    public bool isResting = false;
+    public Vector3 groundPoint;
 
+    public Quaternion restQ = new Quaternion();
+    public Transform jumpTarget;
     void Start()
     {
-        
+         
     }
 
     // Update is called once per frame
@@ -37,7 +41,26 @@ public class LanderScript : MonoBehaviour
         handleMovement();
         handleLanding();
         handleGrounded();
+        handleResting();
 
+
+        
+
+    }
+    void handleResting()
+    {
+
+        if (!isJumping && isResting)
+        {
+            Quaternion q = transform.rotation;
+            transform.rotation = Quaternion.Slerp(q, restQ, Time.deltaTime * 5);
+            if (Quaternion.Angle(q,restQ) < 1.0f)
+            {
+                isResting = false;
+                transform.rotation = restQ;
+
+            }
+        }
     }
     void handleInput()
     {
@@ -65,11 +88,18 @@ public class LanderScript : MonoBehaviour
         velocity += acceleration * Time.deltaTime;
 
         velocity += jumpForce ;
-        
+
+        //Debug.Log("VELOCITY " + velocity.ToString());
+
         transform.position += velocity * Time.deltaTime;
 
         //point in the direction of the movement
-        //transform.LookAt(transform.position + velocity);
+        Quaternion q = transform.rotation;
+        transform.LookAt(transform.position + velocity);
+        Quaternion q2 = transform.rotation;
+        
+        //interpolate
+        transform.rotation = Quaternion.Slerp(q, q2, Time.deltaTime * 5);
 
         //reset thrust
         thrust = Vector3.zero;
@@ -93,11 +123,12 @@ public class LanderScript : MonoBehaviour
             return;
 
         //did we hit the surface
-        if(transform.position.y < 0)
+        float dist = Vector3.Distance(transform.position, groundPoint);
+
+        if (dist < 0.95f) 
         {
-            Vector3 pos = transform.position;
-            pos.y = 0;
-            transform.position = pos;
+
+            transform.position = groundPoint;
             if (velocity.magnitude > crashMagnitude)
             { } //   Debug.Log("SPLAT! " + velocity.magnitude.ToString() );
             else if (velocity.magnitude <= crashMagnitude)
@@ -105,8 +136,18 @@ public class LanderScript : MonoBehaviour
 
             isOnGround = true;
             isJumping = false;
+            isResting = true;
 
             velocity = Vector3.zero;
+
+            //get final rest look
+            restQ = transform.rotation;
+            Vector3 eul = restQ.eulerAngles;
+            eul.x = 0;
+            restQ = Quaternion.Euler(eul);
+
+
+
         }
 
     }
