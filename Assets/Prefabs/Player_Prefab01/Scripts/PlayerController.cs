@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5.0f;
-    public float turnSpeed = 200.0f;
+    public float strafeSpeed = 5.0f;
 
 
     // Start is called before the first frame update
@@ -19,10 +19,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float fwd = Input.GetAxis("Vertical");
-        float turn = Input.GetAxis("Horizontal");
+        float strafe = Input.GetAxis("Horizontal");
 
-        turn *= turnSpeed * Time.deltaTime;
-        transform.Rotate(0, turn, 0);
+        //applying strafe into controller. The player is moving (translated on the X-axis)
+        strafe *= strafeSpeed * Time.deltaTime;
+        transform.Translate(strafe, 0, 0);
 
         Vector3 pos = transform.position;
         Vector3 forward = transform.forward;

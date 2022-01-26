@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField]
+    Transform character;
+    Vector2 currentMouseLook;
+    Vector2 appliedMouseDelta;
+    public float sensitivity = 1;
+    public float smoothing = 2;
     public GameObject cameraOrbit;
     public float rotationSpeed = 5.0f;
+
+    // private Vector3 frozenDirection = Vector3.forward;
+    // private bool isMouseAimFrozen = false;
 
 
     // Start is called before the first frame update
@@ -17,32 +26,36 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         // Get smooth mouse look.
+        Vector2 smoothMouseDelta = Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector2.one * sensitivity * smoothing);
+        appliedMouseDelta = Vector2.Lerp(appliedMouseDelta, smoothMouseDelta, 1 / smoothing);
+        currentMouseLook += appliedMouseDelta;
+        currentMouseLook.y = Mathf.Clamp(currentMouseLook.y, -90, 90);
 
-        if(Input.GetMouseButton(0))
-        {
-            float h = rotationSpeed * Input.GetAxis("Mouse X");
-            float v = rotationSpeed * Input.GetAxis("Mouse Y");
-            if(cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f)
-            {
-                v = 0;
-                cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v * Time.deltaTime);
-            }
+        // Rotate camera and controller.
+        transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
+        character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up);
 
-            
-            if(cameraOrbit.transform.eulerAngles.z + v >= 0.1f || cameraOrbit.transform.eulerAngles.z + v <= 179.9f)
-            {
-                v = 100;
-            }
-        }
         
         float scrollFactor = Input.GetAxis("Mouse ScrollWheel");
         if (scrollFactor != 0)
         {
             cameraOrbit.transform.localScale = cameraOrbit.transform.localScale * (1f - scrollFactor);
         }
+        
+        //(WORK IN PROGRESS)
 
-
-
+        // Freeze the mouse aim direction when the free look key is pressed.
+            // if (Input.GetKeyDown(KeyCode.C))
+            // {
+            //     isMouseAimFrozen = true;
+            //     frozenDirection = Vector3.forward;
+            // }
+            // else if  (Input.GetKeyUp(KeyCode.C))
+            // {
+            //     isMouseAimFrozen = false;
+            //     transform.forward = frozenDirection;
+            // }
 
     
     }
