@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
         forward *= fwd * Time.deltaTime * walkSpeed;
         pos += forward;
-
         transform.position = pos;
     }
 }
