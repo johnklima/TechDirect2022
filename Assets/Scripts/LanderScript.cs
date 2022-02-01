@@ -94,12 +94,12 @@ public class LanderScript : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
 
         //point in the direction of the movement
-        Quaternion q = transform.rotation;
-        transform.LookAt(transform.position + velocity);
-        Quaternion q2 = transform.rotation;
+        //Quaternion q = transform.rotation;
+        //transform.LookAt(transform.position + velocity);
+        //Quaternion q2 = transform.rotation;
         
         //interpolate
-        transform.rotation = Quaternion.Slerp(q, q2, Time.deltaTime * 5);
+        //transform.rotation = Quaternion.Slerp(q, q2, Time.deltaTime * 5);
 
         //reset thrust
         thrust = Vector3.zero;
