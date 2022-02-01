@@ -58,6 +58,9 @@ public class JumpState : MonoBehaviour
             
             }
         }
+        //SIMPLE JUMP HERE
+
+
     }
 
     Vector3 calculateIterativeTrajectory(Vector3 startPoint, Vector3 endPoint, float desiredAngle)
