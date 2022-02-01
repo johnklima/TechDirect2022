@@ -232,8 +232,8 @@ GameObject:
   - component: {fileID: 28579390}
   - component: {fileID: 28579389}
   - component: {fileID: 28579394}
-  - component: {fileID: 28579393}
   - component: {fileID: 28579395}
+  - component: {fileID: 28579393}
   m_Layer: 0
   m_Name: CatNpc
   m_TagString: Untagged
@@ -327,10 +327,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 28579388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0d1e1955e1b23489ab2b480e9db398, type: 3}
+  m_Script: {fileID: 11500000, guid: b647dfcf1a25beb4b9333870db32e69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destination: {fileID: 1827420191}
+  _patrolWaiting: 0
+  _totalWaitTime: 3
+  _switchProbability: 0.2
+  _patrolPoints:
+  - {fileID: 1827420192}
+  - {fileID: 1476667622}
+  - {fileID: 2045669522}
+  - {fileID: 1885879202}
+  - {fileID: 1621123334}
 --- !u!195 &28579394
 NavMeshAgent:
   m_ObjectHideFlags: 0
