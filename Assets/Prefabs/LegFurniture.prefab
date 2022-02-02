@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3906968025147539212}
   - component: {fileID: 2229134362284672582}
   - component: {fileID: 3443780117199545042}
+  - component: {fileID: 5062251278478710789}
   m_Layer: 0
   m_Name: LegFurniture
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5062251278478710789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228250110384958519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.055046506, y: 0.69961154, z: 0.05504649}
+  m_Center: {x: -0.02499995, y: 0.34926397, z: -0.022750255}
