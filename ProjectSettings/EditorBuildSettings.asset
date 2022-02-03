@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/Bedroom.unity
+    guid: 98c3c884cd1ea6340b1254750d47919a
+  - enabled: 1
+    path: Assets/Scenes/Bathroom.unity
+    guid: 24cd10434c18e6c42a046b9d18d0b2ae
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: 38f702e90b5a2ae4aa8a695bae562995
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom.unity
+    guid: f6fd62952939c9447835a44467c9db55
   m_configObjects: {}
