@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     public Transform radius;
     public float rotationSpeed = 5.0f;
     public bool moving;
-
+    
 
     private Vector3 initPosition;
     private Vector3 lastPos;
@@ -73,24 +73,10 @@ public class InputManager : MonoBehaviour
         }
         
         
-        //(WORK IN PROGRESS)
 
-        // Freeze the mouse aim direction when the free look key is pressed.
-            // if (Input.GetKeyDown(KeyCode.C))
-            // {
-            //     isMouseAimFrozen = true;
-            //     frozenDirection = Vector3.forward;
-            // }
-            // else if  (Input.GetKeyUp(KeyCode.C))
-            // {
-            //     isMouseAimFrozen = false;
-            //     transform.forward = frozenDirection;
-            // }
 
         
     }
-
-
 
 
 

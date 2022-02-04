@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5.0f;
     public float strafeSpeed = 5.0f;
-
+    public float friction;
+    public float distToWall = 0.01f;
+    public bool crashed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,36 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        controllerMoving();
+        if(!crashed == true)
+        {
+            collisionCheck();
+        }
+        else
+        {
+    
+        }
+        
+             
+    }
+
+    void collisionCheck()
+    {
+        if (Physics.Raycast(transform.position, Vector3.forward, distToWall + 0.3f))
+        {
+            crashed = true;
+            Debug.Log("Crashed");
+        }
+       else
+       {
+           crashed = false;
+           Debug.Log("NotCrashed");
+       }
+            
+    }
+
+    void controllerMoving()
     {
         float fwd = Input.GetAxis("Vertical");
         float strafe = Input.GetAxis("Horizontal");
@@ -32,4 +64,6 @@ public class PlayerController : MonoBehaviour
         pos += forward;
         transform.position = pos;
     }
+
+
 }
