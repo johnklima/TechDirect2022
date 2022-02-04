@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 28579391}
   - component: {fileID: 28579390}
   - component: {fileID: 28579389}
+  - component: {fileID: 28579393}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -315,6 +316,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 36.696, z: 81.881}
+--- !u!114 &28579393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28579388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b647dfcf1a25beb4b9333870db32e69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolWaiting: 0
+  _totalWaitTime: 3
+  _switchProbability: 0.2
+  _patrolPoints: []
 --- !u!43 &74960369
 Mesh:
   m_ObjectHideFlags: 0
@@ -3794,7 +3811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038146973, y: -0.0000038146973}
+  m_AnchoredPosition: {x: -0, y: -0}
   m_SizeDelta: {x: 105.6465, y: 59.0728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124793238
