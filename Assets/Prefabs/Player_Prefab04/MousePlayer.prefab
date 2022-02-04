@@ -389,8 +389,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   source: {fileID: 8048853274467596008}
-  footstepLeft: {fileID: 8300000, guid: b5d0fa977da978b4193427e9d2e5b5f2, type: 3}
-  footstepRight: {fileID: 8300000, guid: 214101fcbbb67964ca9419fca362a675, type: 3}
+  footstepLeftWood: {fileID: 8300000, guid: b5d0fa977da978b4193427e9d2e5b5f2, type: 3}
+  footstepRightWood: {fileID: 8300000, guid: 214101fcbbb67964ca9419fca362a675, type: 3}
+  footstepLeftBox: {fileID: 8300000, guid: 02e8cf9c57162744583dc4e81242bf9c, type: 3}
+  footstepRightBox: {fileID: 8300000, guid: 84de35fb79cb88a46a0ada140412c899, type: 3}
+  footstepLeftBed: {fileID: 8300000, guid: 6c2d97b591839ae4098919be5e9634e8, type: 3}
+  footstepRightBed: {fileID: 8300000, guid: 058bac1e74aea714896b2a39857ce960, type: 3}
 --- !u!82 &8048853274467596008
 AudioSource:
   m_ObjectHideFlags: 0

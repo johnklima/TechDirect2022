@@ -470,6 +470,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284644279609674798, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
+      propertyPath: footstepLeftBox
+      value: 
+      objectReference: {fileID: 8300000, guid: 02e8cf9c57162744583dc4e81242bf9c, type: 3}
+    - target: {fileID: 4284644279609674798, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
+      propertyPath: footstepLeftWood
+      value: 
+      objectReference: {fileID: 8300000, guid: b5d0fa977da978b4193427e9d2e5b5f2, type: 3}
+    - target: {fileID: 4284644279609674798, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
+      propertyPath: footstepRightBox
+      value: 
+      objectReference: {fileID: 8300000, guid: 84de35fb79cb88a46a0ada140412c899, type: 3}
+    - target: {fileID: 4284644279609674798, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
+      propertyPath: footstepRightWood
+      value: 
+      objectReference: {fileID: 8300000, guid: 214101fcbbb67964ca9419fca362a675, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
 --- !u!1 &57551829
@@ -2276,6 +2292,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1718325205163234774, guid: 8720a52dcf6629446b7d7dd1e9230f12, type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     - target: {fileID: 7597177665833191149, guid: 8720a52dcf6629446b7d7dd1e9230f12, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2739,6 +2759,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476308057}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &488223220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 974193277009951230, guid: 980092178b4991f41a4fd8b15efe09fd, type: 3}
+  m_PrefabInstance: {fileID: 1642046870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &488223224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488223220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24134305, y: 0.038929984, z: 0.18017693}
+  m_Center: {x: 0.03180311, y: 0.07277088, z: 0.00060309854}
 --- !u!1001 &528979294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4943,7 +4981,7 @@ GameObject:
   - component: {fileID: 1119630906}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -6562,6 +6600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1776053273}
     m_Modifications:
+    - target: {fileID: 974193277009951230, guid: 980092178b4991f41a4fd8b15efe09fd, type: 3}
+      propertyPath: m_TagString
+      value: Bed
+      objectReference: {fileID: 0}
     - target: {fileID: 6130011726912999681, guid: 980092178b4991f41a4fd8b15efe09fd, type: 3}
       propertyPath: m_Name
       value: Bed_prefab
