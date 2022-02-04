@@ -38,12 +38,10 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.forward, distToWall + 0.3f))
         {
             crashed = true;
-            Debug.Log("Crashed");
         }
        else
        {
            crashed = false;
-           Debug.Log("NotCrashed");
        }
             
     }
