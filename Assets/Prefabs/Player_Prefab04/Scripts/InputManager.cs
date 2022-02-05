@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     Transform character;
     Vector3 currentMouseLook;
     Vector3 appliedMouseDelta;
+    Vector3 movementDirection;
     public float sensitivity = 1;
     public float smoothing = 2;
     public GameObject cameraOrbit;
@@ -28,57 +29,57 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         //calculates if the player is moving depending on horizontal and vertical axis from inputs.
         Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        
         if(targetVelocity.x != 0 || targetVelocity.z != 0)
         {
             moving = true;
             // Player has moved
-            // STIFF CAMERA
-            // Get smooth mouse look. This rotates the camera around, depending on the input of either mouse axis. 
-            Vector3 smoothMouseDelta = Vector3.Scale(new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector3.one * sensitivity * smoothing);
-            
-            //player rotation to camera
-            appliedMouseDelta = Vector3.Lerp(appliedMouseDelta, smoothMouseDelta, 1 / smoothing);
-            currentMouseLook += appliedMouseDelta;
-            currentMouseLook.y = Mathf.Clamp(currentMouseLook.y, -90, 90);
-
-            // Rotate camera and controller.
-            transform.localRotation = Quaternion.AngleAxis(currentMouseLook.y, Vector3.right);
-            character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up);
-            radius.localRotation = Quaternion.identity;
+            movingCamera();
         }
         else
-            {
-                moving = false;
-
-                //Player has not moved
-            //ORBIT CAMERA
-            float h = rotationSpeed * Input.GetAxis("Mouse X");
-            float v = rotationSpeed * Input.GetAxis("Mouse Y");
-            if (cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f)
-                v = 0;
-
-           cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v);
-            }
+        {
+            //Player has not moved
+            moving = false;
+            idleCamera();
+        }     
         
-        
+        scrollZoom(); 
+    }
+
+    public void movingCamera()
+    {
+        // // Get smooth mouse look. This rotates the camera around, depending on the input of either mouse axis. 
+        Vector3 smoothMouseDelta = Vector3.Scale(new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector3.one * sensitivity * smoothing);
+            
+        // //player rotation to camera
+        appliedMouseDelta = Vector3.Lerp(appliedMouseDelta, smoothMouseDelta, 1 / smoothing);
+        currentMouseLook += appliedMouseDelta;
+        currentMouseLook.y = Mathf.Clamp(currentMouseLook.y, -360, 360);
+
+        // Rotate camera and controller.
+        transform.localRotation = Quaternion.AngleAxis(currentMouseLook.y, Vector3.right);
+        character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up);
+        radius.localRotation = Quaternion.identity;
+    }
+
+    public void idleCamera()
+    {
+        float h = rotationSpeed * Input.GetAxis("Mouse X");
+        float v = rotationSpeed * Input.GetAxis("Mouse Y");
+                
+        //rotation of the orbit, using the euler angles of the GameObject that holds the camera.
+        cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v); 
+    }
+
+    void scrollZoom()
+    {
         //Scrolling mouse wheel allows camera orbit radius to increase/decrese
         float scrollFactor = Input.GetAxis("Mouse ScrollWheel");
         if (scrollFactor != 0)
         {
             cameraOrbit.transform.localScale = cameraOrbit.transform.localScale * (1f - scrollFactor);
         }
-        
-        
-
-
-        
     }
-
-
-
 }
 
