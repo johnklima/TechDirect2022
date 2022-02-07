@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 6366778622289489783}
   - component: {fileID: 7878308285858157626}
   - component: {fileID: 2014587137166352973}
+  - component: {fileID: 4846417747266904784}
   m_Layer: 0
   m_Name: BED_leg_low (2)
   m_TagString: Untagged
@@ -435,6 +436,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4846417747266904784
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458618461438892101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016168782, y: 0.031180715, z: 0.017616458}
+  m_Center: {x: -0.11721965, y: 0.015590352, z: 0.05366652}
 --- !u!1 &6118710631128329755
 GameObject:
   m_ObjectHideFlags: 0

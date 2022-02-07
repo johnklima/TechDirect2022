@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Transform character;
+    public float stoppingSpeed = 0.0f;
     public float walkSpeed = 5.0f;
     public float strafeSpeed = 5.0f;
     public float friction;
@@ -18,24 +20,24 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         controllerMoving();
-        if(!crashed == true)
+        collisionCheck();
+        if(crashed == true)
         {
-            collisionCheck();
+            walkSpeed = -3.0f;
         }
         else
         {
-    
+            walkSpeed = 1.0f;
         }
-        
              
     }
 
     void collisionCheck()
     {
-        if (Physics.Raycast(transform.position, Vector3.forward, distToWall + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.one, distToWall + 0.2f))
         {
             crashed = true;
         }
