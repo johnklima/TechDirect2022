@@ -500,7 +500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3697881402578451034, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
       propertyPath: walkSpeed
-      value: 1
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 3697881402578451034, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
       propertyPath: distToWall
@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3697881402578451034, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
       propertyPath: strafeSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3697881402578451035, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
       propertyPath: moving
