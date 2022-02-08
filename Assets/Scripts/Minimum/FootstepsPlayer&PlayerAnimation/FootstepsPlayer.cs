@@ -30,7 +30,7 @@ public class FootstepsPlayer : MonoBehaviour
                 stepRate += 1;
             }
 
-            if (stepRate >= 7)
+            if (stepRate >= speed)
             {
                 if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit terrain, 0.1f + 0.1f))
                 {
