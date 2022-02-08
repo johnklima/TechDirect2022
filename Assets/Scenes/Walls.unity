@@ -2920,7 +2920,8 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3697881402578451034, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
 --- !u!1 &560557781
 GameObject:
@@ -11285,6 +11286,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833319225}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1855409847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697881402578451029, guid: 3ae02069daafe304f813845a9c4a0fef, type: 3}
+  m_PrefabInstance: {fileID: 544266453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855409848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855409847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2981068f956617148b026840c0c7efbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoppingSpeed: 0
+  walkSpeed: 5
+  strafeSpeed: 5
+  friction: 0
+  distToWall: 0.01
+  crashed: 0
 --- !u!1 &1863369013
 GameObject:
   m_ObjectHideFlags: 0

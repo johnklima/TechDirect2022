@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class WallsController : MonoBehaviour
 {
     Transform character;
     public float stoppingSpeed = 0.0f;
-    public float walkSpeed;
+    public float walkSpeed = 5.0f;
     public float strafeSpeed = 5.0f;
     public float friction;
     public float distToWall = 0.01f;
@@ -30,8 +30,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            walkSpeed = 1.0f;
-            new Vector3(walkSpeed * Time.deltaTime, 0 , walkSpeed * Time.deltaTime);
+            walkSpeed = 3.0f;
         }
              
     }
