@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         collisionCheck();
         if(crashed == true)
         {
-            walkSpeed = -3.0f;
+            walkSpeed = -5.0f;
         }
         else
         {
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void collisionCheck()
     {
-        if (Physics.Raycast(transform.position, Vector3.one, distToWall + 0.2f))
+        if (Physics.Raycast(transform.position, Vector3.one, distToWall + 0.3f))
         {
             crashed = true;
         }
