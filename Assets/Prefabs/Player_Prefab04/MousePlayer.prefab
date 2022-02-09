@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571a6c3abf3975045b64551f8c09d59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
   source: {fileID: 8048853274467596008}
   footstepLeftWood: {fileID: 8300000, guid: b5d0fa977da978b4193427e9d2e5b5f2, type: 3}
   footstepRightWood: {fileID: 8300000, guid: 214101fcbbb67964ca9419fca362a675, type: 3}
