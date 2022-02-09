@@ -8,6 +8,7 @@ TagManager:
   - Wood
   - Box
   - Bed
+  - Enemy
   layers:
   - Default
   - TransparentFX

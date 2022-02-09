@@ -29,7 +29,7 @@ public class NPCPatrol : MonoBehaviour
     bool _waiting;
     bool _patrolForward;
     float _waitTimer;
-    
+
 
     //Initialisation
     public void Start()
@@ -125,6 +125,14 @@ public class NPCPatrol : MonoBehaviour
         }
     }
 
- 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            
+        }
+    }
+
+
+
 }
