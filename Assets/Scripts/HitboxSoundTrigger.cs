@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitboxDoorsound3 : MonoBehaviour
+public class HitboxSoundTrigger : MonoBehaviour
 {
     
     public AudioSource playSound;
