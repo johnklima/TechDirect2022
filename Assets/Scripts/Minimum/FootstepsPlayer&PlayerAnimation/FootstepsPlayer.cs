@@ -36,7 +36,7 @@ public class FootstepsPlayer : MonoBehaviour
                 {
                     if (leftFoot == true)
                     {
-                        if (terrain.transform.CompareTag("Wood"))
+                        if ((terrain.transform.CompareTag("Wood")) || (terrain.transform.CompareTag("Untagged")))
                         {
                             //Debug.Log("wood hit");
                             source.clip = footstepLeftWood;
@@ -66,7 +66,7 @@ public class FootstepsPlayer : MonoBehaviour
                     else
                     {
 
-                        if (terrain.transform.CompareTag("Wood"))
+                        if ((terrain.transform.CompareTag("Wood")) || (terrain.transform.CompareTag("Untagged")))
                         {
                             //Debug.Log("wood hit");
                             source.clip = footstepRightWood;
